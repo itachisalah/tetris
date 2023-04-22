@@ -1,0 +1,271 @@
+#:kivy 1.9.1
+
+<MyForm>
+
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.2, 0.2, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+
+    Label:
+        text:"Tetris"
+        font_size:100
+        pos:500,500
+    Label:
+        text:"Designed by itachi python"
+        font_size:20
+
+
+    Button:
+        text:"New Game"
+        size_hint: None, None
+
+        color:.8,1,0,1
+        background_color: (0, .5, 1.5, 1)
+
+        size:120,50
+        pos_hint: { 'center_x' : .5}
+
+        on_press:root.turn_page()
+
+
+
+    Button:
+        text:"Help"
+        size_hint: None, None
+
+        color:.8,1,0,1
+        background_color: (0, .5, 1.5, 1)
+        pos_hint: { 'center_x' : .5}
+
+        size:120,50
+        on_press:root.go_help()
+
+    Button:
+        text:"About"
+        size_hint: None, None
+
+        color:.8,1,0,1
+        background_color: (0, .5, 1.5, 1)
+        pos_hint: { 'center_x' : .5}
+
+        size:120,50
+
+        on_press:root.go_about()
+    Label:
+        font_size:20
+
+
+
+
+<AboutScreen>:
+
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.2, 0.2, 1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    Label:
+
+        text:
+            """
+            Thanks for playing my game, hope you would enjoy it!
+            @2023 salah. All Rights Reserved.
+            """
+    Button:
+        text:"Back"
+        size_hint: None, None
+
+        color:.8,1,0,1
+        background_color: (0, .5, 1.5, 1)
+
+        size:120,50
+        pos_hint: { 'center_x' : .5}
+        on_press:root.turn_back()
+
+
+<HelpScreen>:
+
+
+    canvas.before:
+
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    Image:
+        source:"71hV2ffEnEL.png"
+        size_hint:0.8,0.6
+        pos_hint:{'center_x':0.5,'center_y':0.7}
+
+    Label:
+        pos_hint:{'center_x':0.5,'center_y':0.25}
+        text:
+            """
+
+
+
+
+
+            Operations:
+            (1) If you don't do anything, the item will go down straight
+            (2) If you touch the left side once,the item will move one step towards the left
+            (3) If you touch the right side once,the item will move one step towards the right
+            (4) If you touch the board(the middle) once,the item will rotate and change its shape
+
+
+            Buttons:
+            (5) Start Button -------- start the game or restart the game.
+            (6) Music Button -------- Music on-off
+            (7) Back  Button -------- Return to the menu
+            """
+    Button:
+        text:"Back"
+        size_hint: None, None
+
+        color:.8,1,0,1
+        background_color: (0, .5, 1.5, 1)
+
+        size:120,50
+        pos_hint: { 'center_x' : .5}
+        on_press:root.turn_back()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<GameScreen>
+    refresh: refresh.__self__
+    board: board_id
+    sidebar: sidebar_id
+    orientation: 'horizontal'
+    padding: 10
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.2, 0.2, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Board:
+        id: board_id
+        size_hint_x: 0.7
+
+    Sidebar:
+        id: sidebar_id
+        score: score_id
+        level: level_id
+        lines_cleared: lines_cleared_id
+        next_piece: next_piece_id
+
+        size_hint_x: 0.3
+
+        orientation: 'vertical'
+
+        Label:
+            bold: True
+            text: 'Score'
+            size_hint_y: 1
+
+        Label:
+            id: score_id
+            text: '0'
+            size_hint_y: 1
+
+        Label:
+            bold: True
+            text: 'Level'
+            size_hint_y: 1
+
+        Label:
+            id: level_id
+            text: '0'
+            size_hint_y: 1
+
+        Label:
+            bold: True
+            text: 'Lines Cleared'
+            size_hint_y: 1
+
+        Label:
+            id: lines_cleared_id
+            text: '0'
+            size_hint_y: 1
+
+        Label:
+            bold: True
+            text: 'Next'
+            size_hint_y: 1
+
+        Widget:
+            id: next_piece_id
+            size_hint_y: 3
+
+        Button:
+            id: refresh
+            background_color: (0, .5, 1.5, 1)
+            on_press: root.start_game()
+            text: 'Start'
+            size:120,50
+
+        Button:
+            id: music_button_id
+            background_color: (0, .5, 1.5, 1)
+            on_press: root.start_music()
+            text: 'Music'
+            size:120,50
+        Button:
+            id: music_button_id
+            background_color: (0, .5, 1.5, 1)
+            on_press: root.backhome()
+            text: 'Back'
+            size:120,50
+
+
